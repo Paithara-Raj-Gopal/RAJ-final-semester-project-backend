@@ -113,3 +113,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+print("DJANGO_SECRET_KEY:", os.getenv("DJANGO_SECRET_KEY"))
+print("POSTGRES_DB:", os.getenv("POSTGRES_DB"))
+
