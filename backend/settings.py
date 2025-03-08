@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-p!_3npo7h$8@y182ohe)gs)02_^8p40+dzq_a7)c-+ldeky78i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh',"127.0.0.1"]
+ALLOWED_HOSTS = ['.vercel.app', 'localhost', '.now.sh',"127.0.0.1"]
 
 
 # Application definition
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True  # Temporary fix for local testing
+# CORS_ALLOW_ALL_ORIGINS = True  # Temporary fix for local testing
 CORS_ALLOW_CREDENTIALS = True
 
 
@@ -101,16 +101,28 @@ SIMPLE_JWT = {
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'health_analysis',  # Your database name
+#         'USER': 'postgres',  # Replace with your PostgreSQL username
+#         'PASSWORD': 'rajgopal123',  # Replace with your PostgreSQL password
+#         'HOST': 'localhost',  
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'health_analysis',  # Your database name
-        'USER': 'postgres',  # Replace with your PostgreSQL username
-        'PASSWORD': 'rajgopal123',  # Replace with your PostgreSQL password
-        'HOST': 'localhost',  
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME', 'health_analysis'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'rajgopal123'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
+
 
 
 
