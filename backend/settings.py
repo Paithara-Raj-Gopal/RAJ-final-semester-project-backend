@@ -4,16 +4,20 @@ from datetime import timedelta
 from dotenv import load_dotenv
 
 # Load environment variables
-load_dotenv()
+if os.getenv("VERCEL") is None:
+    load_dotenv()
+
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
+DEBUG = os.getenv("DJANGO_DEBUG") == "True"
 
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "default-secret-key")
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "default-secret-key")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
