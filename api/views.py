@@ -15,6 +15,11 @@ from .serializers import HealthDataSerializer
 from django.utils import timezone  # ✅ Import timezone
 from django.utils.timezone import localtime
 import pytz
+from django.http import HttpResponse
+
+
+def home(request):
+    return HttpResponse("Hello, Django on Vercel is working!")
 
 
 # ✅ User Signup API

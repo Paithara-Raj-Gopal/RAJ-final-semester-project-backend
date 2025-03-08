@@ -3,6 +3,7 @@ from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
 
+
 # Load environment variables
 if os.getenv("VERCEL") is None:
     load_dotenv()
@@ -112,7 +113,7 @@ USE_TZ = True
 
 # Static files
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static"]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
 
 # Default primary key field type
