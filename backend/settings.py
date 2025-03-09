@@ -20,7 +20,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.getenv("DJANGO_DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".vercel.app", "*.vercel.app"]
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -55,7 +56,9 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React frontend
     "https://paithara-raj-gopal.github.io",
+    # "https://raj-final-semester-project-backend-8ow5dtixs.vercel.app",
 ]
+CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = "backend.urls"
 
