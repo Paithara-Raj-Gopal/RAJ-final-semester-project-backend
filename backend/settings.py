@@ -24,13 +24,13 @@ ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split("
 
 # Application definition
 INSTALLED_APPS = [
-    "whitenoise.runserver_nostatic"
+    "whitenoise.runserver_nostatic",
+    "django.contrib.staticfiles",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
     "rest_framework",
     "rest_framework_simplejwt",
     "api",
@@ -42,7 +42,7 @@ CORS_ALLOW_CREDENTIALS = True
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
-    # "whitenoise.middleware.WhiteNoiseMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
