@@ -9,8 +9,12 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "backend/wsgi.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/static/$1"
     }
   ],
   "env": {
